@@ -34,6 +34,20 @@ async function run(): Promise<void> {
     if (githubToken !== '') {
       // Create GitHub client
       const githubClient = new GitHub(githubToken)
+      // eslint-disable-next-line no-console
+      console.log({
+        ref: context.ref,
+        sha: context.sha,
+        actor: context.actor
+      })
+      // await githubClient.repos.createCommitComment({
+      //   // TODO:
+      //   owner: 'nwtgck',
+      //   repo: 'piping-server',
+      //   // eslint-disable-next-line @typescript-eslint/camelcase
+      //   commit_sha: 'hogehoge',
+      //   body: message,
+      // });
       // If it is a pull request
       if (context.issue.number !== undefined) {
         // Comment the deploy URL
